@@ -16,10 +16,13 @@ echo "Bringing all services ${args[@]}"
 docker compose -f ./duckdns/docker-compose.yml ${args[@]}
 
 # services
+docker compose -f ./authelia/docker-compose.yml ${args[@]}
+docker compose -f ./dashy/docker-compose.yml ${args[@]}
 docker compose -f ./immich/docker-compose.yml ${args[@]}
 docker compose -f ./LibreChat/docker-compose.yml ${args[@]}
 docker compose -f ./privatebin/docker-compose.yml ${args[@]}
 docker compose -f ./psitransfer/docker-compose.yml ${args[@]}
+docker compose -f ./searxng/docker-compose.yml ${args[@]}
 docker compose -f ./shlink/docker-compose.yml ${args[@]}
 docker compose -f ./watchtower/docker-compose.yml ${args[@]}
 
