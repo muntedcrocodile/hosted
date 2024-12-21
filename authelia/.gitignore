@@ -1,0 +1,7 @@
+.env
+secrets
+
+data/authelia/db.sqlite3
+data/authelia/notification.txt
+
+data/redis

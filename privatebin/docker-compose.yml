@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  privatebin:
+    container_name: privatebin
+    image: privatebin/nginx-fpm-alpine
+    restart: always
+    read_only: true
+    user: "1000:1000"  # Run the container with the UID:GID of your Docker user
+    volumes:
+      - "./data/conf.php:/srv/cfg/conf.php:ro"
+      - ./data/store:/srv/data
+    networks:
+      - proxy
+    depends_on:
+      - privatebin_yourls_shlink_proxy
+
+
+  privatebin_yourls_shlink_proxy:
+    container_name: privatebin_yourls_shlink_proxy
+    restart: always
+    build: yourls_shlink_proxy/.
+    environment:
+      - SHLINK_URL=${SHLINK_URL}
+      - SHLINK_API_KEY=${SHLINK_API_KEY}
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

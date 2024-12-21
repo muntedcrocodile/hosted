@@ -1,0 +1,54 @@
+version: "3.7"
+
+services:
+  shlink:
+    container_name: shlink
+    image: shlinkio/shlink:stable
+    user: "1001:1001"
+    restart: always
+    environment:
+      - DEFAULT_DOMAIN=shlink.ghost4.duckdns.org
+      - IS_HTTPS_ENABLED=true
+      - DISABLE_TRACKING=false
+      - ANONYMIZE_REMOTE_ADDR=false
+      - DB_DRIVER=maria
+      - DB_USER=shlink
+      - DB_NAME=shlink
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=shlink_db
+      - GEOLITE_LICENSE_KEY=${GEOLITE_LICENSE_KEY}
+      - TIMEZONE=Australia/Sydney
+    networks:
+      - shlink_bridge
+      - proxy
+    depends_on:
+      - shlink_db
+
+  shlink_db:
+    container_name: shlink_db
+    image: mariadb:10.8
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=shlink
+      - MARIADB_USER=shlink
+      - MARIADB_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./data/shlink_db:/var/lib/mysql
+    networks:
+      - shlink_bridge
+
+  shlink_web_client:
+    container_name: shlink_web_client
+    image: shlinkio/shlink-web-client
+    restart: always
+    volumes:
+      - ./data/servers.json:/usr/share/nginx/html/servers.json
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+  shlink_bridge:
+    driver: bridge

@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  # Main server
+  minecraft_fabric:
+    container_name: minecraft_fabric
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: FABRIC
+      VERSION: "1.20.1"
+      FABRIC_LOADER_VERSION: "0.14.22"
+      MEMORY: 3G
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - ./data:/data
+
+  # Mirror server
+  minecraft_fabric_mirror:
+    container_name: minecraft_fabric_mirror
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25566:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: FABRIC
+      VERSION: "1.20.1"
+      FABRIC_LOADER_VERSION: "0.14.22"
+      MEMORY: 2G
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - ./data_mirror:/data
+
+

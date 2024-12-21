@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  authelia:
+    image: authelia/authelia
+    environment:
+      AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET: ${JWT_SECRET}
+      AUTHELIA_SESSION_SECRET: ${SESSION_SECRET}
+      AUTHELIA_SESSION_REDIS_PASSWORD: ${AUTHELIA_SESSION_REDIS_PASSWORD}
+      # AUTHELIA_STORAGE_POSTGRES_PASSWORD: ${STORAGE_PASSWORD}
+      AUTHELIA_STORAGE_ENCRYPTION_KEY: ${STORAGE_ENCRYPTION_KEY}
+      X_AUTHELIA_CONFIG_FILTERS: template
+    volumes:
+      - ./data/authelia:/config
+      - ./data/secrets/private_key.pem:/config/secrets/oidc/jwks/private_key.pem
+    # ports:
+    #   - 9091:9091
+    restart: unless-stopped
+    healthcheck:
+      disable: true
+    # environment:
+    #   - TZ=America/Chicago
+    depends_on:
+      - authelia_redis
+    networks:
+      - proxy
+      - authelia_bridge
+
+  authelia_redis:
+    image: redis:alpine
+    volumes:
+      - ./data/redis:/data
+    expose:
+      - 6379
+    restart: unless-stopped
+    # environment:
+    #   - TZ=America/Chicago
+    networks:
+      - authelia_bridge
+
+networks:
+  proxy:
+    external: true
+  authelia_bridge:
+    driver: bridge

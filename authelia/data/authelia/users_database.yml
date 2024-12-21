@@ -1,0 +1,15 @@
+###############################################################
+#                         Users Database                      #
+###############################################################
+ 
+# This file can be used if you do not have an LDAP set up.
+ 
+# List of users
+users:
+  muntedcrocodile:
+    displayname: "Munted Crocodile"
+    password: "$argon2id$v=19$m=65536,t=3,p=4$g/3FiRCF9RCuo1oIM2IoPg$lali26RrUa3oh/AaGHuCr7Xd7KlBwqBUqGNP9UEZvs4"   #hash using docker run authelia/authelia:latest YOURNAME hash-password SOMEPASSWORD
+    email: muntedcrocodile@protonmail.com
+    groups:
+      - admins
+      - users
