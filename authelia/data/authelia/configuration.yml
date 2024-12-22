@@ -1247,7 +1247,7 @@ identity_providers:
     clients:
         - client_id: 'aJKrX3hW3y2UrE4V8QL8klMsIci4DGxNn3cYB5YXFw1NFiSM2JdKiqp0jNeXqyv9_P2bc_rY'
           client_name: 'immich'
-          client_secret: '$pbkdf2-sha512$310000$wB7h4srzn1DCfc5IH6sHRQ$7Jk3wFLbb5o7ZZ.MoZ4snQIUHV6Pa8EDODjsYK3iXAQB/rl6Cttu.MH1FmoQ6q0ndEMW85u3Et049t7UX9ndcg'  # The digest of 'insecure_secret'.
+          client_secret: '$pbkdf2-sha512$310000$wB7h4srzn1DCfc5IH6sHRQ$7Jk3wFLbb5o7ZZ.MoZ4snQIUHV6Pa8EDODjsYK3iXAQB/rl6Cttu.MH1FmoQ6q0ndEMW85u3Et049t7UX9ndcg'  # The digest of 'client_secret'.
           public: false
           authorization_policy: 'two_factor'
           redirect_uris:
@@ -1262,11 +1262,24 @@ identity_providers:
 
         - client_id: 'Ec~oxhj24OwhP5RKnEAWZywXP7CDbo9Kh3BxVrsMefv3yLZOiXhzXbYJQOHcGO2KfB6Rlfnl'
           client_name: 'librechat'
-          client_secret: '$pbkdf2-sha512$310000$wiFEkvIJNjORop3EuZxsZw$ZBjD3niHeG1FzwYZOKNq/nDMgiGgdyqvwfiuifc2yAmDpsZNSMeqtf29Pwdluym8SgvlNRgfjaYys0WQt6QX4Q'  # The digest of 'insecure_secret'.
+          client_secret: '$pbkdf2-sha512$310000$wiFEkvIJNjORop3EuZxsZw$ZBjD3niHeG1FzwYZOKNq/nDMgiGgdyqvwfiuifc2yAmDpsZNSMeqtf29Pwdluym8SgvlNRgfjaYys0WQt6QX4Q'  # The digest of 'client_secret'.
           public: false
           authorization_policy: 'two_factor'
           redirect_uris:
             - 'https://chat.ghost4.duckdns.org/oauth/openid/callback'
+          scopes:
+            - 'openid'
+            - 'profile'
+            - 'email'
+          userinfo_signed_response_alg: 'none'
+
+        - client_id: 'KM9m3Ww8lzJcX3_ksHUCke2uG2kTh5f~yFDBoskdHhHpcve7OuQepTo2~D_JEcVn~tvQyqe9'
+          client_name: 'openwebui'
+          client_secret: '$pbkdf2-sha512$310000$ZrLNw53SVcUEJCfDPBD3Rg$tsgKRC8DlN2Z4EJj4THuyBkK46EPOVcPNXXXD5sGKxGbEvqEzJZFch2umKcIH0pFm4ikX.D1ho2N1DuQkZrI9A'  # The digest of 'client_secret'.
+          public: false
+          authorization_policy: 'two_factor'
+          redirect_uris:
+            - 'https://web.ghost4.duckdns.org/oauth/oidc/callback'
           scopes:
             - 'openid'
             - 'profile'

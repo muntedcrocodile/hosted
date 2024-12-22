@@ -5,8 +5,6 @@ services:
     container_name: psitransfer
     image: psitrax/psitransfer
     restart: always    
-    ports:
-      - "3000:3000"
     environment:
       - PSITRANSFER_ADMIN_PASS=${PSITRANSFER_ADMIN_PASS}
       # - PSITRANSFER_UPLOAD_PASS=${PSITRANSFER_ADMIN_PASS}

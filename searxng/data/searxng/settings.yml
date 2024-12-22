@@ -3,10 +3,16 @@ use_default_settings: true
 
 server:
   # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
-  limiter: true  # can be disabled for a private instance
+  limiter: false  # can be disabled for a private instance
   image_proxy: false
 ui:
   static_use_hash: true
+  query_in_title: true
+  infinite_scroll: true
+  default_theme: simple
+  theme_args:
+    # style of simple theme: auto, light, dark
+    simple_style: dark
 redis:
   url: redis://redis:6379/0
 
@@ -19,13 +25,6 @@ search:
     - html
     - json
 
-ui:
-  query_in_title: true
-  infinite_scroll: true
-  default_theme: simple
-  theme_args:
-    # style of simple theme: auto, light, dark
-    simple_style: dark
 
 outgoing:
   # default timeout in seconds, can be override by engine

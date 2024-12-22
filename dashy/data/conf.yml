@@ -4,8 +4,7 @@ sections:
   - name: Public Services
     icon: far fa-rocket
     items:
-      - &ref_0
-        title: File Shair
+      - title: File Shair
         description: Shair files
         icon: >-
           data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
@@ -24,30 +23,26 @@ sections:
         target: sametab
         statusCheck: true
         id: 0_1475_fileshair
-      - &ref_1
-        title: URL shortener
+      - title: URL shortener
         icon: https://url.ghost4.duckdns.org/icons/icon-1024x1024.png
         url: >-
           https://url.ghost4.duckdns.org/server/shlink-shlink.ghost4.duckdns.org/overview
         target: sametab
         statusCheck: true
         id: 1_1475_urlshortener
-      - &ref_2
-        title: PasteBin
+      - title: PasteBin
         icon: https://bin.ghost4.duckdns.org/img/icon.svg
         url: https://bin.ghost4.duckdns.org/
         target: sametab
         statusCheck: true
         id: 2_1475_pastebin
-      - &ref_3
-        title: Search
+      - title: Search
         icon: https://search.ghost4.duckdns.org/static/themes/simple/img/favicon.svg
         url: https://search.ghost4.duckdns.org/
         target: sametab
         statusCheck: true
         id: 3_1475_search
-      - &ref_4
-        title: Authelia
+      - title: Authelia
         icon: https://avatars.githubusercontent.com/u/59122411
         url: https://auth.ghost4.duckdns.org
         target: sametab
@@ -59,12 +54,6 @@ sections:
       cols: 3
       collapsed: false
       hideForGuests: false
-    filteredItems:
-      - *ref_0
-      - *ref_1
-      - *ref_2
-      - *ref_3
-      - *ref_4
   - name: Private services
     displayData:
       sortBy: default
@@ -73,23 +62,23 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_5
-        title: immich
+      - title: immich
         icon: https://immich.ghost4.duckdns.org/favicon-144.png
         url: https://immich.ghost4.duckdns.org/
         target: sametab
         statusCheck: true
         id: 0_1631_immich
-      - &ref_6
-        title: Libre Chat
+      - title: Libre Chat
         icon: https://chat.ghost4.duckdns.org/assets/apple-touch-icon-180x180.png
         url: https://chat.ghost4.duckdns.org/
         target: sametab
         statusCheck: true
         id: 1_1631_librechat
-    filteredItems:
-      - *ref_5
-      - *ref_6
+      - title: Open WebUI
+        icon: https://web.ghost4.duckdns.org/favicon/apple-touch-icon.png
+        url: https://web.ghost4.duckdns.org/
+        statusCheck: true
+        id: 2_1631_openwebui
   - name: Internet
     displayData:
       sortBy: default
@@ -98,24 +87,23 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_7
-        title: Proton Mail
+      - title: Proton Mail
         icon: https://mail.proton.me/assets/favicon.ico
         url: https://mail.proton.me/u/1/inbox
         target: sametab
         statusCheck: true
         id: 0_841_protonmail
-      - &ref_8
-        title: GitHub
+      - title: GitHub
         icon: https://github.com/fluidicon.png
         url: https://github.com/muntedcrocodile?tab=repositories
         target: sametab
         statusCheck: true
         id: 1_841_github
-    filteredItems:
-      - *ref_7
-      - *ref_8
-
+      - title: Open Routers
+        icon: https://openrouter.ai/favicon.ico
+        url: https://openrouter.ai/
+        statusCheck: true
+        id: 2_841_openrouters
 appConfig:
   theme: colorful
   layout: auto
